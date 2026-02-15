@@ -1,0 +1,989 @@
+/* =========================================
+   p-style.css  (Mobile override)
+   覆蓋即可使用：先載入原本 style.css，再覆蓋手機
+   ========================================= */
+
+@import url("./style.css");
+@media (max-width: 991.98px){
+iframe{ max-width: 100%; }
+
+  /* ========== 基礎防爆 ========== */
+  #loader, .grain-layer { display: none !important; }
+  .noise-bg::before, .noise-bg::after { display: none !important; }
+
+  html, body{
+    overflow-x: hidden;
+    width: 100%;
+    background: #faf8f3 !important;
+  }
+
+  body{ margin: 0; }
+  .row{ margin-left: 0 !important; margin-right: 0 !important; }
+  img, video, svg{ max-width: 100%; height: auto; }
+  .container, section, header, footer, main, div{ max-width: 100%; }
+
+  /* ========== Header ========== */
+  .m-header{
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .m-header__row{
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 18px;
+  }
+
+  .m-hamburger{
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent !important;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    align-content: center;
+    gap: 6px;
+    padding: 10px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .m-hamburger::-moz-focus-inner{ border: 0; }
+
+  .m-hamburger span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #222;
+    border-radius: 2px;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  body.menu-open .m-hamburger span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+  body.menu-open .m-hamburger span:nth-child(2){ opacity: 0; }
+  body.menu-open .m-hamburger span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+  /* ========== Menu overlay ========== */
+  .m-menu{
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: none;
+    background: rgba(255,255,255,.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 76px 16px 24px;
+  }
+  .m-menu.is-open{ display: flex; }
+  .m-close{ display: none !important; }
+
+  .m-menu__inner{
+    width: min(88vw, 420px);
+    max-width: 100%;
+    border-radius: 28px;
+    background: rgba(235,235,235,.62);
+    border: 1px solid rgba(255,255,255,.55);
+    box-shadow: 0 18px 60px rgba(0,0,0,.10);
+    padding: 26px 22px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    overflow: visible;
+  }
+
+  .m-menu__title{
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: .10em;
+    color: #222;
+    margin: 0;
+  }
+  .m-menu__sub{
+    font-size: 14px;
+    letter-spacing: .06em;
+    opacity: .78;
+    color: #222;
+    margin: 10px 0 8px;
+  }
+
+  .m-menu__nav{
+    width: 100%;
+    display: grid;
+    gap: 18px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .m-menu__nav a{
+    text-decoration: none;
+    color: #222 !important;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    background: transparent !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .m-menu__social{
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: .9;
+  }
+  body.menu-open{ overflow: hidden; }
+
+
+
+
+
+  /* ========== Hero start 白黃背景 + 標題置中 + 動畫（不打架） ========== */
+    /* (A) 首屏白黃背景 */
+:root{
+  /* ✅ 內容用：不要動（你原本用什麼就留什麼） */
+  --jr-split: clamp(200px, 30vh, 280px);
+
+  /* ✅ 背景用：只調這個，越大＝黃色起點越往下 */
+  --jr-bg-split: clamp(2px, 100vh, 3600px);
+
+  --jr-mango: #F5DEB3;
+
+  --jr-title-y: clamp(-28px, -2.2vh, -12px);
+  --jr-sub-gap: clamp(8px, 1.2vh, 14px);
+
+  --jr-title-dur: 2.6s;
+  --jr-title-delay: .25s;
+  --jr-sub-dur: 2.6s;
+  --jr-sub-delay: .8s;
+  --jr-enter-y: 16px;
+}
+
+
+  .jr-hero{
+    background: linear-gradient(
+      to bottom,
+      #faf8f3 0%,
+      #faf8f3 var(--jr-split),
+      var(--jr-mango) var(--jr-bg-split),
+      var(--jr-mango) 100%
+    ) !important;
+  }
+
+  .jr-hero__stage{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: var(--jr-split);
+  }
+
+  /* (B) 解除 style.css 的「靠右版」：row 不要 space-between */
+  .jr-hero__stage .row{
+    justify-content: center !important;
+  }
+
+  /* (C) 解除 style.css 對 jr-heading 的「負邊距 + 靠右」 */
+  .jr-hero .jr-heading{
+    margin-left: 0 !important;        /* 砍掉 -80px */
+    text-align: center !important;    /* 砍掉 right */
+    width: 100%;
+
+    /* 不用 absolute / left / float */
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    float: none !important;
+
+    /* 你原本的「拉到交界」效果 */
+    margin-top: clamp(-140px, -18vh, -80px);
+
+    /* ✅ 真置中：用 grid */
+    display: grid !important;
+    place-items: center !important;
+
+    /* 動畫：標題整包淡入 + 上滑 */
+    opacity: 0;
+    animation: jrHeroTitleIn var(--jr-title-dur) ease-out forwards;
+    animation-delay: var(--jr-title-delay);
+  }
+
+  /* (D) 解除 style.css 對副標的 absolute + right:0 */
+  .jr-hero .jr-ttl-wrap{
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    text-align: center !important;
+    position: static !important;  /* 不當定位基準 */
+  }
+
+  .jr-hero .jr-ttl{
+    margin: 0 0 var(--jr-sub-gap) !important;
+    text-align: center !important;
+  }
+
+  .jr-hero .jr-subttl{
+    position: static !important; /* ✅ 不准 absolute */
+    right: auto !important;
+    top: auto !important;
+    left: auto !important;
+    float: none !important;
+    font-size: 3.5vw;
+    width: 100%;
+    margin: 0 auto !important;
+    text-align: center !important;
+    white-space: normal !important;
+
+    opacity: 0;
+    animation: jrHeroSubIn var(--jr-sub-dur) ease-out forwards;
+    animation-delay: var(--jr-sub-delay);
+  }
+
+  /* (E) 動畫：把上下微調寫進 keyframes，避免 transform 打架 */
+  @keyframes jrHeroTitleIn{
+    from{
+      opacity: 0;
+      transform: translateY(calc(var(--jr-title-y) + var(--jr-enter-y)));
+    }
+    to{
+      opacity: 1;
+      transform: translateY(var(--jr-title-y));
+    }
+  }
+
+  @keyframes jrHeroSubIn{
+    from{
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+/* ========== Hero end 白黃背景 + 標題置中 + 動畫（不打架） ========== */
+
+
+
+
+
+.jr-hero__stage::after{
+  display: none !important;
+}
+.jr-hero{
+  overflow: visible !important;
+}
+/* ===============================影片startart ===============================*/ 
+/* ===== Mobile 圓形影片：只留這一套 ===== */
+.jr-hero-video,
+.jr-hero-video *{
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.jr-hero-video{
+  height: min(72vh, 720px);
+  display: grid;
+  grid-template-areas: "stack";
+  place-items: center;
+  overflow: hidden;          /* 超出裁掉（你要的灰色隱藏效果） */
+  background: transparent;
+  margin-top: 0;
+}
+.jr-hero-video{
+  position: relative;
+  z-index: 3;                 /* ✅ 讓圓不要被白色那塊蓋住 */
+  margin-top: -140px;         /* ✅ 往上提：改這個數值 */
+  height: min(72vh, 720px);
+  display: grid;
+  grid-template-areas: "stack";
+  place-items: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+.jr-hero__stage{
+  position: relative;
+  z-index: 2;
+}
+
+.jr-hero-video .jr-video-arch{
+  grid-area: stack;
+  z-index: 10;
+  /* 永遠正圓 */
+  --circle: clamp(420px, 130vw, 680px);
+  inline-size: var(--circle);
+  block-size: var(--circle);
+
+  border-radius: 50%;
+  overflow: hidden;
+  background: #000;
+
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+
+  /* ✅ 圓位置：往左 / 往上（用 px 最穩） */
+  --shift-x: clamp(-260px, -15.4vw, -12px); /* 往左 */
+  --shift-y: 30px;                        /* 往上（負值） */
+
+  /* ✅ 一次把 X / Y 都用上 */
+  transform: translate(var(--shift-x), var(--shift-y));
+
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+}
+
+
+
+/* ✅ 讓影片真的「填滿」圓形：不要 static，不要 height:auto */
+.jr-hero-video .jr-yt-iframe{
+  width: 100% !important;
+  height: 100% !important;
+
+  border: 0;
+  display: block;
+
+  /* 讓 YouTube iframe 以 cover 的方式裁切 */
+  transform: scale(1.35);    /* ✅ 關鍵：放大去 cover 圓形 */
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* 右下角文字：不用 absolute，用 grid 疊在同一層 */
+.jr-hero-video .jr-hero-caption{
+  grid-area: stack;
+  justify-self: end;
+  align-self: end;
+
+  margin: 0 clamp(14px, 4vw, 28px) clamp(16px, 5vw, 34px) 0;
+
+  text-align: right;
+  color: #fff;
+  z-index: 2;
+
+  padding: clamp(10px, 2.6vw, 14px) clamp(12px, 3vw, 16px);
+  border-radius: 16px;
+  background: rgba(0,0,0,.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.jr-hero-video .jr-cap-title{
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1.08;
+  font-size: clamp(20px, 4vw, 30px);
+}
+
+.jr-hero-video .jr-cap-body{
+  margin: 6px 0 0;
+  opacity: .86;
+  font-size: clamp(12px, 2.6vw, 16px);
+  letter-spacing: .04em;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .jr-hero-video .jr-hero-caption{
+    animation: jrCapIn .9s ease both;
+  }
+  @keyframes jrCapIn{
+    from{ opacity: 0; transform: translateY(10px); }
+    to  { opacity: 1; transform: translateY(0); }
+  }
+}
+/* 圓容器：本來就有 border-radius:50% + overflow:hidden */
+.jr-hero-video .jr-video-arch{
+  position: relative;     /* 只當內部定位基準，不影響外部排版 */
+  overflow: hidden;
+}
+
+/* ✅ YouTube iframe：用 16:9 cover 正方形（= cover 圓形） */
+.jr-hero-video .jr-yt-iframe{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  /* 關鍵：正方形要 cover 16:9 → 寬要變成 177.78% */
+  width: 177.78%;
+  height: 100%;
+
+  transform: translate(-50%, -50%);
+  transform-origin: center center;
+
+  border: 0;
+}
+
+
+/* ============影片end=================== */
+
+/* ============================展場資訊st======================== */
+/* ===== Expo Dates (namespace: expo-) ===== */
+.expo-dates{
+  background: transparent;
+  padding: clamp(18px, 3vw, 28px) clamp(16px, 4vw, 34px);
+}
+
+.expo-wrap{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(18px, 3vw, 28px);
+  align-items: start;
+}
+
+/* 卡片 */
+.expo-card{
+  min-width: 0;
+}
+
+.expo-head{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+/* 左上文字 */
+.expo-meta{
+  line-height: 1.15;
+}
+.expo-place{
+  font-weight: 800;
+  letter-spacing: .02em;
+  color: #c36b3d; /* 橘 */
+  font-size: 14px;
+}
+.expo-place--green{
+  color: #2f7f64; /* 綠 */
+}
+.expo-venue{
+  margin-top: 4px;
+  font-weight: 700;
+  color: #1f2230;
+  font-size: 15px;
+}
+
+/* 日期大字 */
+.expo-daterow{
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: end;
+}
+
+.expo-range{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.expo-num{
+  font-weight: 900;
+  font-size: clamp(34px, 4.6vw, 46px);
+  letter-spacing: -0.02em;
+  color: #111827;
+}
+.expo-dash{
+  font-weight: 900;
+  font-size: clamp(26px, 3.6vw, 34px);
+  color: #111827;
+  opacity: .75;
+}
+
+.expo-week{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: baseline;
+  padding-bottom: 6px;
+}
+.expo-year{
+  font-weight: 800;
+  color: #111827;
+  opacity: .85;
+  font-size: 13px;
+}
+.expo-day{
+  font-weight: 900;
+  letter-spacing: .10em;
+  color: #111827;
+  font-size: 12px;
+}
+
+/* 右邊圓箭頭 */
+.expo-arrow{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+.expo-arrow--tokyo{ background: #c36b3d; }
+.expo-arrow--kobe { background: #2f7f64; }
+.expo-arrow span{ font-weight: 900; }
+
+/* 下方縮圖列（會閃換） */
+.expo-thumbs{
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  height: 54px;
+  position: relative;
+}
+
+.expo-thumb{
+  width: 100%;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity .35s ease, transform .35s ease;
+  /* 讓它們疊在各自格子裡：用 grid + 每張都佔位 */
+  grid-row: 1;
+}
+
+/* 讓每張圖都在自己的格子裡顯示：用 nth-child 指派欄位 */
+.expo-thumbs .expo-thumb:nth-child(1){ grid-column: 1; }
+.expo-thumbs .expo-thumb:nth-child(2){ grid-column: 2; }
+.expo-thumbs .expo-thumb:nth-child(3){ grid-column: 3; }
+.expo-thumbs .expo-thumb:nth-child(4){ grid-column: 4; }
+/* 如果你放超過 4 張，會自動循環，但超出的會疊在第4格，看起來會閃 */
+.expo-thumbs .expo-thumb:nth-child(n+5){ grid-column: 4; }
+
+.expo-thumb.is-active{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 手機：改成上下排比較像你貼圖的比例 */
+@media (max-width: 991.98px){
+  .expo-wrap{
+    grid-template-columns: 1fr;
+  }
+  .expo-thumbs{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    height: 50px;
+  }
+  .expo-thumb{ height: 50px; }
+  .expo-thumbs .expo-thumb:nth-child(1){ grid-column: 1; }
+  .expo-thumbs .expo-thumb:nth-child(2){ grid-column: 2; }
+  .expo-thumbs .expo-thumb:nth-child(3){ grid-column: 3; }
+  .expo-thumbs .expo-thumb:nth-child(4){ grid-column: 3; } /* 超出就疊在最後一格閃 */
+}
+/* ============================展場資訊end======================== */
+
+
+
+
+/* ============================3pic st======================== */
+ 
+  .jr-triptych{
+    display: flex !important;
+    flex-wrap: nowrap !important;     /* ✅ 不准換行 → 不會上下疊 */
+    gap: 14px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x mandatory !important;
+    scroll-padding-left: 16px !important;
+
+    padding: 0 16px 12px !important;
+    width: 100% !important;
+    margin: 0 !important;
+
+    background: transparent !important;
+  }
+
+  .jr-triptych::-webkit-scrollbar{ display:none; }
+
+  .jr-tile{
+    flex: 0 0 82vw !important;        /* ✅ 一張卡片寬度（右邊會露出下一張） */
+    scroll-snap-align: start !important;
+
+    aspect-ratio: 1 / 1 !important;   /* ✅ 正方形 */
+    border-radius: 22px !important;
+    overflow: hidden !important;
+
+    background: transparent !important;
+    position: relative !important;
+  }
+
+  .jr-tile > img{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* ✅ 只留箭頭（疊在圖上） */
+  .jr-overlay{
+    position: absolute !important;
+    inset: 0 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: flex-end !important;
+    padding: 16px !important;
+    background: linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,0)) !important;
+  }
+
+  .jr-overlay__inner{ display:none !important; } /* 標題文字先藏，畫面乾淨 */
+
+  .jr-overlay-btn{
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 999px !important;
+    border: 0 !important;
+    background: rgba(255,255,255,.9) !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.15) !important;
+
+    font-size: 0 !important; /* 把「了解更多→」文字吃掉 */
+    display: grid !important;
+    place-items: center !important;
+  }
+  .jr-overlay-btn::before{
+    content:"→";
+    font-size:18px;
+    font-weight:900;
+    color:#1f2230;
+  }
+    /* ✅ 卡片：正方形 */
+  .jr-tile{
+    flex: 0 0 82vw !important;
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;      /* ✅ 打掉舊的 vh 高度 */
+    min-height: 0 !important;
+    border-radius: 22px !important;
+    overflow: hidden !important;
+    position: relative !important;
+    background: transparent !important;
+  }
+
+  /* ✅ 圖片：跟著正方形填滿 */
+  .jr-tile > img{
+    width: 100% !important;
+    height: 100% !important;      /* ✅ 關鍵：不要 auto */
+    max-height: none !important;  /* ✅ 打掉 520px */
+    object-fit: cover !important;
+    display: block !important;
+  }
+  
+  /* ✅ overlay 不要遮罩、不吃整張 */
+  .jr-overlay{
+    position: absolute !important;
+    inset: auto 14px 14px auto !important; /* 右下角 */
+    padding: 0 !important;
+    background: none !important;
+    display: block !important;
+  }
+
+  /* 標題/內文先不在卡片上顯示 */
+  .jr-overlay__inner{ display:none !important; }
+
+  /* ✅ 圓形箭頭按鈕 */
+  .jr-overlay-btn{
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 999px !important;
+    border: 0 !important;
+    background: rgba(255,255,255,.92) !important;
+    box-shadow: 0 10px 24px rgba(0,0,0,.16) !important;
+    display: grid !important;
+    place-items: center !important;
+
+    font-size: 0 !important; /* 隱藏原本「了解更多 →」文字 */
+  }
+  .jr-overlay-btn::before{
+    content:"→";
+    font-size:18px;
+    font-weight:900;
+    color:#1f2230;
+  }/* ✅ 小卡 modal */
+
+.jr-mini-backdrop{
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.jr-mini-card{
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(86vw, 420px);
+  max-height: 72vh;
+  overflow: auto;
+  background: rgba(250,248,243,.96);
+  border-radius: 22px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.18);
+  padding: 18px 18px 16px;
+}
+
+.jr-mini-close{
+  position: absolute;
+  right: 12px; top: 10px;
+  width: 38px; height: 38px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(0,0,0,.06);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.jr-mini-title{
+  margin: 6px 44px 10px 0;
+  font-weight: 900;
+  letter-spacing: .02em;
+  color: #1f2230;
+}
+
+.jr-mini-body{
+  white-space: pre-line; /* 保留你 data-content 的換行 */
+  line-height: 1.7;
+  color: #1f2230;
+  opacity: .9;
+  font-size: 15px;
+}
+
+body.jr-modal-open{ overflow: hidden; }
+  /* ✅ 小卡（jr-triptych）跟上面的展場資訊拉開距離 */
+  .jr-triptych{
+    margin-top: 7vh !important;   /* 想更大就改 28/32 */
+  }
+  /* 背景遮罩 */
+.jr-modal-wrap{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* 小卡本體 */
+.jr-modal-card{
+  background: #f3efe6;
+  width: min(92vw, 520px);
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 28px;
+  padding: 28px 24px 26px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.25);
+  position: relative;
+}
+
+/* 關閉 */
+.jr-modal-close{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: 0;
+  background: #e5e1d8;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* 標題 */
+.jr-modal-title{
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #1f2230;
+}
+
+/* 中間圖片 */
+.jr-modal-img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 12px 0 16px;
+  display: none; /* 預設隱藏，沒圖就不顯示 */
+}
+
+/* 內容 */
+.jr-modal-body{
+  line-height: 1.7;
+  font-size: 15px;
+  color: #333;
+}
+
+/* 開啟狀態 */
+.jr-modal-wrap.is-open{
+  display: flex;
+}
+
+/* 背景遮罩 */
+.jr-modal-wrap{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* 小卡本體 */
+.jr-modal-card{
+  background: #f3efe6;
+  width: min(92vw, 520px);
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 28px;
+  padding: 28px 24px 26px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.25);
+  position: relative;
+}
+
+/* 關閉 */
+.jr-modal-close{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  border: 0;
+  background: #e5e1d8;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* 標題 */
+.jr-modal-title{
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #1f2230;
+}
+
+/* 中間圖片 */
+.jr-modal-img{
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 12px 0 16px;
+  display: none; /* 預設隱藏，沒圖就不顯示 */
+}
+
+/* 內容 */
+.jr-modal-body{
+  line-height: 1.7;
+  font-size: 15px;
+  color: #333;
+}
+
+/* 開啟狀態 */
+.jr-modal-wrap.is-open{
+  display: flex;
+}
+html.jr-modal-open, body.jr-modal-open{
+  height: 100%;
+  overflow: hidden;
+  touch-action: none;
+}
+/* ✅ 強制 jrModal 置中（跨手機穩） */
+#jrModal{
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+
+  /* 用 grid 直接置中，比 flex / vh 穩 */
+  display: none !important;
+  place-items: center !important;
+
+  /* 留安全邊（瀏海/底部） */
+  padding:
+    calc(16px + env(safe-area-inset-top))
+    calc(16px + env(safe-area-inset-right))
+    calc(16px + env(safe-area-inset-bottom))
+    calc(16px + env(safe-area-inset-left)) !important;
+
+  background: rgba(0,0,0,.35) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+#jrModal.is-open{ display: grid !important; }
+
+/* 卡片本體：取消任何推移，真正置中 */
+#jrModal .jr-modal-card{
+  margin: 0 !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+
+  width: min(92vw, 720px) !important;
+  max-height: min(84dvh, 760px) !important; /* dvh 比 vh 穩 */
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch;
+}
+/* ✅ 讓 modal 永遠在最上層，不會被任何浮動按鈕蓋住 */
+#jrModal{
+  z-index: 2147483647 !important; /* 幾乎是上限 */
+}
+#jrModal *{
+  z-index: 2147483647 !important;
+}
+/* 外層包起來 0215*/
+.jr-stories{
+  margin-top: 100px;   /* 跟展場資訊拉開距離 */
+}
+
+/* 固定標題 */
+.jr-stories-header{
+  padding: 0 20px 0px;
+}
+
+.jr-stories-title{
+  /* font-family: 'Cactus Classical Serif', serif; */
+  margin: 0 0 2px;
+  font-weight: 900;
+  font-size: clamp(34px, 10vw, 4600px);
+  letter-spacing: -0.02em;
+  color: #2A2B40;
+}
+
+.jr-stories-sub{
+  font-size: 20px;
+  opacity: .9;
+  margin: 0 0 -30px;
+}
+.nav-link{ color:#2A2B40;font-size: 5vw;}
+.container{font-size: 5vw;}
+
+
+}
