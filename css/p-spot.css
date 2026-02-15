@@ -1,0 +1,158 @@
+
+@import url("./homepost.css");
+@media (max-width: 991.98px){
+iframe{ max-width: 100%; }
+
+  /* ========== 基礎防爆 ========== */
+  #loader, .grain-layer { display: none !important; }
+  .noise-bg::before, .noise-bg::after { display: none !important; }
+
+  html, body{
+    overflow-x: hidden;
+    width: 100%;
+    background: #faf8f3 !important;
+  }
+
+  body{ margin: 0; }
+  .row{ margin-left: 0 !important; margin-right: 0 !important; }
+  img, video, svg{ max-width: 100%; height: auto; }
+  .container, section, header, footer, main, div{ max-width: 100%; }
+
+  /* ========== Header ========== */
+  .m-header{
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .m-header__row{
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 18px;
+  }
+
+  .m-hamburger{
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent !important;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    align-content: center;
+    gap: 6px;
+    padding: 10px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .m-hamburger::-moz-focus-inner{ border: 0; }
+
+  .m-hamburger span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #222;
+    border-radius: 2px;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  body.menu-open .m-hamburger span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+  body.menu-open .m-hamburger span:nth-child(2){ opacity: 0; }
+  body.menu-open .m-hamburger span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+  /* ========== Menu overlay ========== */
+  .m-menu{
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: none;
+    background: rgba(255,255,255,.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 76px 16px 24px;
+  }
+  .m-menu.is-open{ display: flex; }
+  .m-close{ display: none !important; }
+
+  .m-menu__inner{
+    width: min(88vw, 420px);
+    max-width: 100%;
+    border-radius: 28px;
+    background: rgba(235,235,235,.62);
+    border: 1px solid rgba(255,255,255,.55);
+    box-shadow: 0 18px 60px rgba(0,0,0,.10);
+    padding: 26px 22px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    overflow: visible;
+  }
+
+  .m-menu__title{
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: .10em;
+    color: #222;
+    margin: 0;
+  }
+  .m-menu__sub{
+    font-size: 14px;
+    letter-spacing: .06em;
+    opacity: .78;
+    color: #222;
+    margin: 10px 0 8px;
+  }
+
+  .m-menu__nav{
+    width: 100%;
+    display: grid;
+    gap: 18px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .m-menu__nav a{
+    text-decoration: none;
+    color: #222 !important;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    background: transparent !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .m-menu__social{
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: .9;
+  }
+  body.menu-open{ overflow: hidden; }
+
+.post-hero__img{
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/TSA00175i.jpg"); /* ← 換成你的圖 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1);
+}
+.post-hero__content h1{
+   font-size: clamp(34px, 10vw, 4600px);
+  letter-spacing: .08em;
+  color: #fff;
+  margin: 0 0 10px;
+}
+
+}

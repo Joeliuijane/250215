@@ -1,0 +1,1191 @@
+body{font-family: 'Noto Serif JP', sans-serif}
+/* =====heder start====== */
+/* 這頁固定使用 sticky 樣式的 navbar */
+.post-page .navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 60px;                /* 保持你原本 sticky 的 padding */
+  background: #F5DEB3!important;
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+  z-index: 999;
+}
+/* 給主內容一個頂部空間，免得被 navbar 壓住。
+   依你 navbar 實際高度調整  (例：90~120px) */
+.post-page #ftx-duo{
+  margin-top: 120px;
+}
+
+.navbar {
+    position: relative;
+    transition: .5s;
+    z-index: 999;
+    margin-top: 0 !important;
+    top: 0 !important;
+}
+
+.navbar.nav-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+    transition: .5s;
+}
+
+.navbar .navbar-brand {
+    margin: 0;
+    color: #ffffff;
+    font-size: 45px;
+    line-height: 0px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.navbar .navbar-brand img {
+    max-width: 100%;
+    max-height: 40px;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    padding: 10px 15px 8px 15px;
+    color: #f3a643;/*header字體顏色*/
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #ff4000;/*header點擊後字體顏色*/
+    transition: none;
+}
+
+.navbar .dropdown-menu {
+    margin-top: 0;
+    border: 0;
+    border-radius: 0;
+    background: #f8f9fa; 
+}
+
+@media (min-width: 992px) {
+    .navbar {
+        position: absolute;
+        width: 100%;
+        top: 45px;
+        padding: 20px 60px;
+        background: transparent !important;
+        border-bottom: 1px solid rgba(255, 255, 255, .3);
+        z-index: 9;
+    }
+    
+    .navbar.nav-sticky {
+        padding: 10px 60px;
+        background: rgba(255, 254, 249, 0.8) !important; /*header顏色*/
+        border-bottom: none;
+    }
+    
+    .page .navbar {
+        background: #20212B !important;
+    }
+    
+    .navbar a.nav-link {
+        padding: 8px 15px;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 991.98px) {   
+    .navbar {
+        padding: 15px;
+        background: #20212B !important;
+    }
+    
+    .navbar a.nav-link {
+        padding: 5px;
+    }
+    
+    .navbar .dropdown-menu {
+        box-shadow: none;
+    }
+}
+/* ======================heder end============================= */
+
+
+/* myfooter start*/
+/* ====== 玻璃板參數（可調） ====== */
+:root{
+  --glass-tint: 245, 222, 179;   /* 麥色 F5DEB3 的 RGB */
+  --glass-alpha: .82;            /* 透明度 */
+  --glass-blur: 12px;            /* 模糊強度 */
+  --glass-radius: 20px;          /* 圓角 */
+  --glass-shadow: 0 20px 40px rgba(0,0,0,.12);
+  --glass-border: 1px solid rgba(255,255,255,.35);
+}
+
+/* Footer 外距 */
+#site-footer.footer-modern{
+  position: relative;
+  z-index: 10;
+  padding: clamp(32px, 4vw, 56px) 0;
+  background: transparent;
+}
+
+/* 半透明玻璃板 */
+#site-footer .footer-panel{
+  position: relative;
+  margin-inline: clamp(12px, 3.2vw, 48px);
+  padding: clamp(20px, 2.6vw, 40px);
+  border-radius: var(--glass-radius);
+  background: rgba(var(--glass-tint), var(--glass-alpha));
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  isolation: isolate; /* 限制 backdrop-filter 範圍 */
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(110%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(110%);
+}
+
+/* Grid 版型：品牌 + 4 欄 / 第二排 3 欄   26/1/20有改成3藍  */
+#site-footer .footer-grid{
+  display: grid;
+  gap: clamp(16px, 2.2vw, 28px) clamp(18px, 2.6vw, 40px);
+
+  /* Logo + 3 個平均欄位 */
+  grid-template-columns:
+    minmax(200px, 260px)   /* Logo */
+    repeat(3, 1fr);        /* 三個文字區平均撐滿 */
+
+  align-items: start;
+}
+
+
+/* 社群 icon（只影響 ig / yt，不影響其他連結） */
+#site-footer .icon-ig::before,
+#site-footer .icon-yt::before{
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Instagram */
+#site-footer .icon-ig::before{
+  background-image: url("/img/icon-instagram.svg");
+}
+
+/* YouTube */
+#site-footer .icon-yt::before{
+  background-image: url("/img/icon-youtube.svg");
+}
+
+/* 260120改 end */
+
+
+
+
+
+/* 左上 Logo 佔兩排 */
+#site-footer .footer-brand{
+  grid-row: 1 / span 2;
+   max-width: clamp(400px, 20vw, 420px);  /* ← 調這三個數字就能更大/更小 */
+  align-self: start;
+}
+#site-footer .footer-brand img{
+  display: block;
+  max-width: clamp(160px, 12vw, 240px);
+  height: auto;
+}
+
+/* 欄位標題與清單 */
+#site-footer .footer-col h4{
+  margin: 0 0 .6rem;
+  font-weight: 700;
+  font-size: clamp(20px, 1.1rem + .6vw, 24px);
+  letter-spacing: .04em;
+}
+#site-footer .footer-list{
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid; gap: .5rem;
+}
+#site-footer .footer-list a{
+  color: inherit;
+  text-decoration: none;
+  opacity: .85;
+  transition: opacity .2s ease, transform .2s ease;
+}
+#site-footer .footer-list a:hover{
+  opacity: 1; transform: translateX(2px);
+}
+
+/* RWD：平板兩欄、手機一欄 */
+@media (max-width: 992px){
+  #site-footer .footer-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  #site-footer .footer-brand{
+    grid-row: auto;
+    grid-column: 1 / -1;
+    margin-bottom: .5rem;
+  }
+}
+@media (max-width: 576px){
+  #site-footer .footer-grid{ grid-template-columns: 1fr; }
+  #site-footer .footer-panel{ margin-inline: 16px; }
+}
+
+/* 讓玻璃板脫離 container 的限制，置中且寬 = 100vw */
+#site-footer.footer--bleed .footer-panel{
+  width: 90vw;
+  max-width: none;
+  margin-left: 50%;
+  transform: translateX(-50%);  /* ← 置中 */
+  padding: clamp(28px, 4.5vw, 68px);
+  border-radius: 24px;
+}
+
+/* 手機邊緣太貼可略收一點（可選） */
+@media (max-width: 576px){
+  #site-footer.footer--bleed .footer-panel{
+    width: calc(100vw - 16px);
+  }
+}
+
+/* 若你的頁面有 .noise-bg（紙質噪點），確保噪點在玻璃板底下 */
+#site-footer.noise-bg::before{ z-index: 0; }
+#site-footer.noise-bg > *{ position: relative; z-index: 1; }
+
+/* myfooter end */
+
+
+
+
+
+
+
+/* ===========================
+   FTX Story (scoped & hardened)
+   專屬於 #ftx-duo，避免被全站樣式覆蓋
+   =========================== */
+
+/* 1) 外層：兩欄版面與與 header 騰出空間 */
+#ftx-duo{
+  position: relative;
+  margin: 120px auto 80px;              /* 不撞到你的固定導覽列 */
+  max-width: 1280px;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;       /* 左文字、右圖片 */
+  column-gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  background: transparent !important;   /* 擋掉外部背景 */
+}
+
+/* 2) 每欄容器：高度、裁切、背景歸零 */
+#ftx-duo .ftx-box{
+  position: relative;
+  height: 72vh;                         /* 想更高可調 80vh/100vh */
+  min-height: 420px;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+/* 3) 每一頁 slide：強制疊放＋轉場（權重提高，避免被外站覆蓋） */
+#ftx-duo .ftx-slide{
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 720ms ease, transform 720ms ease;
+  pointer-events: none;
+  background: transparent !important;
+}
+
+/* 260122s */
+/* FTX 按鈕導覽 */
+#ftx-duo{ position: relative; }
+
+/* FTX 導覽按鈕：放在圖片下方，不覆蓋內容 */
+#ftx-duo .ftx-nav{
+  position: absolute;
+  left: 24px;
+  right: 24px;
+
+  /* 關鍵：往下推到圖片容器外 */
+  bottom: -56px;   /* ← 這個數值可微調（40~72px） */
+
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+#ftx-duo .ftx-btn{
+  pointer-events: auto; /* 只有按鈕可以點 */
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background: rgba(245, 222, 179, .92);
+  box-shadow: 0 10px 22px rgba(0,0,0,.10);
+  transition: transform .15s ease, opacity .2s ease;
+}
+
+#ftx-duo .ftx-btn:hover{ transform: translateY(-1px); }
+#ftx-duo .ftx-btn:active{ transform: translateY(0); }
+
+#ftx-duo .ftx-btn[disabled]{
+  opacity: 0;
+  transform: none;
+  pointer-events: none;
+}
+
+/* 260122e */
+
+
+/* 可調參數：文字最大寬度 */
+
+
+/* 狀態 */
+#ftx-duo .ftx-slide.ftx-active{
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+
+
+}
+
+
+#ftx-duo .ftx-slide.ftx-prev{
+  opacity: 0 !important;
+  transform: translateY(-40px) !important;
+}
+
+
+:root{
+  --ftx-text-max: 60ch; /* 想更寬可 54ch / 60ch */
+}
+/* 4) 左欄內容：標題在上、段落在下、置中對齊照片中央 */
+#ftx-duo [data-role="text"] .ftx-slide{
+  display: flex !important;
+  flex-direction: column !important;    /* 標題在上、內文在下 */
+  justify-content: center !important;   /* 垂直置中，對齊右側照片中線 */
+  align-items: flex-start !important;
+  gap: 1rem !important;
+   max-width: var(--ftx-text-max) !important;                    /* 欄寬可讀性 */
+  text-align: left !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  color: inherit !important;
+}
+
+/* 標題樣式（橫排、別被直排覆蓋） */
+#ftx-duo .ftx-title{
+  margin: 0 0 .2em 0 !important;
+  font-weight: 800;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.25;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  float: none !important;
+}
+
+
+/* 段落樣式（橫排） */
+#ftx-duo [data-role="text"] .ftx-slide > p{
+  margin: 0 !important;
+  font-size: clamp(18px, 20px, 22px);
+  line-height: 1.9;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+}
+
+/* 5) 右欄圖片：鋪滿容器，保持比例 */
+#ftx-duo .ftx-box--image .ftx-slide{
+  display: grid !important;
+  place-items: center !important;
+}
+#ftx-duo .ftx-box--image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* 想完整顯示全圖改成 contain */
+  object-position: center;
+  display: block;
+    border-radius: 20px;   /* 數值越大圓角越明顯 */
+}
+
+/* 6) 「下一段」提示殘影（在左欄底部，淡淡提示） */
+/* 下一段標題殘影（顯示在左欄底部） */
+#ftx-duo [data-role="text"]{ position: relative !important; }
+
+#ftx-duo .ftx-next-ghost{
+  position: absolute; left: 0; right: 0; bottom: .25rem;
+  z-index: 5;
+  text-align: left;
+  font-weight: 700;
+  font-size: clamp(10px, 18px, 22px);
+  color: #2A2B40;
+  opacity: var(--ftx-ghost-alpha);
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+/* 預設：不顯示“下一段：”字樣 */
+#ftx-duo .ftx-next-ghost::before{ content: none; }
+
+/* 只有在顯示狀態才出現“下一段：” */
+#ftx-duo .ftx-next-ghost.is-show{
+  opacity: calc(var(--ftx-ghost-alpha) + .1);
+  transform: translateY(0);
+}
+#ftx-duo .ftx-next-ghost.is-show::before{
+  content: "下一段：";
+  opacity: .5; margin-right: .25em; font-weight: 600; letter-spacing: .02em;
+}
+
+/* 到最後一段：徹底關閉 */
+#ftx-duo .ftx-next-ghost.is-hidden{
+  display: none !important;
+  opacity: 0 !important;
+  transform: translateY(8px) !important;
+  transition: none !important;
+}
+
+
+/* === 更多文章 start === */
+/* 更多文章整體區塊 */
+.clean-related {
+  max-width: 1200px;       /* 區塊最大寬度 */
+  margin: 0 auto;          /* 置中 */
+  padding: 0 10px;         /* 左右留白間距 */
+  box-sizing: border-box;  /* 避免 padding 影響 max-width */
+}
+
+/* 卡片容器 */
+/* ===== 更多文章：卡片容器與卡片 ===== */
+
+
+/* 區塊標題顏色（『更多文章』） */
+.clean-related .cr-title{
+  color: #1f2a44;            /* 換你要的顏色 */
+  /* text-align: center; */
+  padding: 2vw;
+}
+
+/* 卡片內標題顏色（每張卡片的 h4） */
+.clean-related .cr-card .cr-info h4{
+  color: #243b6b;            /* 換你要的顏色 */
+  margin: 0 0 .35em 0;
+  font-size: 18px;
+}
+
+/* 卡片內內文顏色（每張卡片的 p） */
+.clean-related .cr-card .cr-info p{
+  color: #4b5563;            /* 換你要的顏色 */
+  margin: 0;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* 若卡片有超連結，顏色／hover 狀態 */
+.clean-related .cr-card a{
+  color: inherit;            /* 跟著父層色，或自行指定 */
+  text-decoration: none;
+}
+.clean-related .cr-card a:hover{
+  color: #0f62fe;            /* hover 顏色 */
+}
+
+.clean-related .cr-track {
+  display: flex;
+  gap: 28px;
+  /* 重要：不要裁切陰影 */
+  overflow: visible;
+  
+}
+
+/* 卡片本體：外框 + 陰影 + 圓角 */
+.clean-related .cr-card {
+  flex: 1 1 0;
+  background: #f8f9fa;
+  border-radius: 16px;
+  /* 讓圓角生效，但不裁掉外部陰影（陰影在外層，不受這個影響） */
+  overflow: hidden;
+
+  /* 外框＋陰影：inset 畫出 1px 的髮絲外框，避免被背景吃掉 */
+  box-shadow:
+    0 6px 20px rgba(0,0,0,0.08),    /* 柔和陰影 */
+    0 0 0 1px rgba(0,0,0,0.06) inset; /* 內側髮絲外框（四邊都會有、含底邊） */
+
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.clean-related .cr-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.12),
+    0 0 0 1px rgba(0,0,0,0.08) inset;
+}
+
+/* 卡片圖片：只讓圖片有上圓角，避免看起來「底邊少一截」 */
+.clean-related .cr-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;      /* 依你需求可調 */
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+/* 文字區塊：與圖分隔清楚 */
+.clean-related .cr-info {
+  padding: 18px 20px 22px;
+  border-top: 1px solid rgba(0,0,0,0.06); /* 圖片與內容間的分隔線 */
+}
+
+/* 關閉左下角「下一段」殘影 */
+#ftx-duo .ftx-next-ghost{
+  display: none !important;
+}
+
+
+/* === 更多文章 end=== */
+/* 0127--圓角與裁切：交給 figure */
+/* 右側圖片欄：固定成橫幅比例（建議 16:9 或更橫 21:9） */
+#ftx-duo .ftx-box--image{
+  height: auto;                 /* 不要再用 vh 綁高度 */
+  aspect-ratio: 17 / 15;         /* 想更橫就改 21/9 */
+  max-height: 850px;            /* 避免大螢幕太巨大，可調 */
+}
+
+#ftx-duo .ftx-box--image .ftx-slide{
+  border-radius: 20px;
+  overflow: hidden;
+}
+#ftx-duo .ftx-box--image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0 !important;
+}
+
+#ftx-duo .ftx-box--image img{
+  object-position: center 35%;
+}
+
+
+
+/* 0130 */
+/* =========================
+   更多報導 NEWS Carousel
+   ========================= */
+.news-strip{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(18px, 2.8vw, 28px) 12px 40px;
+}
+.news-strip{
+  background: #f8f9fa;
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 40px);
+}
+
+
+.news-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.news-title{
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(20px, 1.1rem + .7vw, 28px);
+  color: #1f2a44;
+  letter-spacing: .02em;
+}
+
+.news-actions{ display:none !important; }
+
+.news-arrow{
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.8);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .2s ease;
+}
+.news-arrow:hover{ transform: translateY(-1px); }
+.news-arrow:active{ transform: translateY(0); }
+
+.news-rail{
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(250px, 320px);
+  gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 4px 14px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  /* 拖曳手感 */
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 仍可滑動，但不顯示滑桿 */
+.news-rail{
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE/Edge 舊版 */
+}
+.news-rail::-webkit-scrollbar{
+  display: none;              /* Chrome/Safari */
+}
+
+
+.news-rail:active{ cursor: grabbing; }
+
+/* 隱藏 scrollbar（可要可不要） */
+.news-rail::-webkit-scrollbar{ height: 10px; }
+.news-rail::-webkit-scrollbar-thumb{ background: rgba(0,0,0,.12); border-radius: 999px; }
+.news-rail::-webkit-scrollbar-track{ background: transparent; }
+
+.news-card{
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  text-decoration: none;
+  color: inherit;
+
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.06),
+    0 0 0 1px rgba(0,0,0,0.05) inset;
+
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.news-card:hover{
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.12),
+    0 0 0 1px rgba(0,0,0,0.08) inset;
+}
+
+.news-thumb{
+  aspect-ratio: 16/10;
+  background: #f3f4f6;
+}
+.news-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-meta{
+  padding: 14px 16px 16px;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.news-tag{
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(245, 222, 179, .55);
+  margin-bottom: 10px;
+}
+
+.news-h{
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #243b6b;
+}
+
+.news-p{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4b5563;
+
+  /* 兩行截斷，讓卡片整齊 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 當前頁（可選：讓使用者知道自己在哪篇） */
+.news-card.is-active{
+  box-shadow:
+    0 10px 26px rgba(0,0,0,0.04),
+    0 0 0 2px rgba(255, 64, 0, .55) inset;
+}
+
+/* RWD：手機卡片寬一點比較好滑 */
+@media (max-width: 576px){
+  .news-rail{
+    grid-auto-columns: minmax(240px, 86vw);
+  }
+}
+
+.news-strip{
+  margin-top: 8vw;   /* 你可以試 60 / 80 / 100 */
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   p-style.css  (Mobile override)
+   覆蓋即可使用：先載入原本 style.css，再覆蓋手機
+   ========================================= */
+
+@media (max-width: 991.98px){
+iframe{ max-width: 100%; }
+
+  /* ========== 基礎防爆 ========== */
+  #loader, .grain-layer { display: none !important; }
+  .noise-bg::before, .noise-bg::after { display: none !important; }
+
+  html, body{
+    overflow-x: hidden;
+    width: 100%;
+    background: #faf8f3 !important;
+  }
+
+  body{ margin: 0; }
+  .row{ margin-left: 0 !important; margin-right: 0 !important; }
+  img, video, svg{ max-width: 100%; height: auto; }
+  .container, section, header, footer, main, div{ max-width: 100%; }
+
+  /* ========== Header ========== */
+  .m-header{
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .m-header__row{
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 18px;
+  }
+
+  .m-hamburger{
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent !important;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    align-content: center;
+    gap: 6px;
+    padding: 10px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .m-hamburger::-moz-focus-inner{ border: 0; }
+
+  .m-hamburger span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #222;
+    border-radius: 2px;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  body.menu-open .m-hamburger span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+  body.menu-open .m-hamburger span:nth-child(2){ opacity: 0; }
+  body.menu-open .m-hamburger span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+  /* ========== Menu overlay ========== */
+  .m-menu{
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: none;
+    background: rgba(255,255,255,.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    align-items: flex-start;
+    justify-content: center;
+    padding: 76px 16px 24px;
+  }
+  .m-menu.is-open{ display: flex; }
+  .m-close{ display: none !important; }
+
+  .m-menu__inner{
+    width: min(88vw, 420px);
+    max-width: 100%;
+    border-radius: 28px;
+    background: rgba(235,235,235,.62);
+    border: 1px solid rgba(255,255,255,.55);
+    box-shadow: 0 18px 60px rgba(0,0,0,.10);
+    padding: 26px 22px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    overflow: visible;
+  }
+
+  .m-menu__title{
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: .10em;
+    color: #222;
+    margin: 0;
+  }
+  .m-menu__sub{
+    font-size: 14px;
+    letter-spacing: .06em;
+    opacity: .78;
+    color: #222;
+    margin: 10px 0 8px;
+  }
+
+  .m-menu__nav{
+    width: 100%;
+    display: grid;
+    gap: 18px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .m-menu__nav a{
+    text-decoration: none;
+    color: #222 !important;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    background: transparent !important;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .m-menu__social{
+    display: flex;
+    gap: 22px;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: .9;
+  }
+  body.menu-open{ overflow: hidden; }
+
+  /* =================手機文字圖片排版=========== */
+  
+  /* 1) 手機：不要用 absolute 疊 slide，否則容器高度會變 0 */
+  #ftx-duo .ftx-slide{
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transition: none !important;
+  }
+
+  /* 2) 手機：只顯示當前那段（避免四段全文一次爆開） */
+  #ftx-duo [data-role="text"] .ftx-slide,
+  #ftx-duo [data-role="image"] .ftx-slide{
+    display: none !important;
+  }
+  #ftx-duo [data-role="text"] .ftx-slide.ftx-active,
+  #ftx-duo [data-role="image"] .ftx-slide.ftx-active{
+    display: block !important;
+  }
+
+  /* 3) 手機：導覽按鈕不要 absolute（你要的），讓它跟著排版走 */
+  #ftx-duo .ftx-nav{
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: 14px;
+    pointer-events: auto;
+    order: 3;
+  }
+
+  /* 4) 手機：容器高度跟內容走 */
+  #ftx-duo .ftx-box{
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+    /* ✅ 強制單欄：圖片在上、文字在下 */
+  body.post-page #ftx-duo{
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* 關鍵：變 1 欄 */
+    column-gap: 0 !important;
+    row-gap: 28px !important;
+    align-items: start !important;
+  }
+
+  /* ✅ 排序：圖片先、文字後 */
+  body.post-page #ftx-duo .ftx-box--image{ order: 1 !important; }
+  body.post-page #ftx-duo .ftx-box[data-role="text"]{ order: 2 !important; }
+  body.post-page #ftx-duo .ftx-nav{ order: 3 !important; }
+
+  /* ✅ 取消桌機用 vh 高度，手機讓內容自然撐開 */
+  body.post-page #ftx-duo .ftx-box{
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* ✅ 取消圖片固定比例（不然會怪） */
+  body.post-page #ftx-duo .ftx-box--image{
+    aspect-ratio: auto !important;
+    max-height: none !important;
+  }
+  /* 手機：縮小 header 與內容間距 */
+  body.post-page #ftx-duo{
+    margin-top: 20px !important;   /* 原本 120px 改小 */
+    margin-bottom: 40px !important;
+  }
+.ftx-slide p{
+  font-size: clamp(15px, 4.3vw, 18px);
+  line-height: 1.8;
+}
+.m-header{
+  position: relative;
+}
+
+.m-back-btn{
+  position: absolute;
+  top: 18px;
+  left: 18px;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  font-weight: 800;
+  color: #222;
+  text-decoration: none;
+}
+/* 讓 back 按鈕以 header 為定位基準 */
+.m-header{ position: sticky; }            /* 你原本就有 sticky，可留著 */
+.m-header{ position: sticky; top: 0; }
+.m-header{ position: sticky; top: 0; }
+.m-header{ position: sticky; top: 0; }    /* 這幾行若你已經有就不用重複 */
+.m-header{ position: sticky; top: 0; }
+.m-header{ position: sticky; top: 0; }
+
+/* ✅ 重點：加上 relative，讓 absolute 只在 header 內定位 */
+.m-header{ position: sticky; top: 0; }
+.m-header{ position: relative; }
+
+/* ✅ 圈圈按鈕：永遠跟漢堡同一水平（用 50% 垂直置中） */
+.m-back-btn{
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.10);
+
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ✅ 箭頭：更粗＋灰色 */
+.m-back-ico{
+  width: 22px;
+  height: 22px;
+}
+.m-back-ico path{
+  fill: none;
+  stroke: #6b7280;        /* 灰色 */
+  stroke-width: 3.2;      /* 粗一點 */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* 可選：按下回饋 */
+.m-back-btn:active{
+  transform: translateY(-50%) scale(.98);
+}
+
+
+
+/* ================================================= */
+/* 讓左側整塊變成「置中展示區」 */
+.track-left{
+  min-height: 85vh;
+  display: grid;
+  place-items: center; 
+  position: relative; /* 讓英文可以定位 */
+}
+
+/* 讓中文自己成為置中主體 */
+.jp-vertical{
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin: 0;
+  font-size: clamp(64px, 18vw, 120px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+/* 英文改成絕對定位 */
+.en-vert{
+  position: absolute;
+  left: 50%;
+  transform: translateX(60px);  /* 依你字體大小微調 */
+  
+  writing-mode: vertical-rl;
+  font-size: 14px;
+  letter-spacing: 0.28em;
+  color: #6b7280;
+}
+
+/* 進場：淡入 + 水波（最後穩定） */
+.track-left .vstack{
+  opacity: 0;
+  transform: translateY(8px);
+  filter: url(#waterRipple);
+  animation: vstackFadeIn 1.6s ease forwards;
+}
+
+@keyframes vstackFadeIn{
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 英文可稍微晚一點出來（更有質感，可選） */
+.track-left .en-vert{
+  opacity: 0;
+  animation: enFade 1.6s ease forwards;
+  animation-delay: .15s;
+}
+
+@keyframes enFade{
+  to{ opacity: 1; }
+}
+
+/* 尊重使用者降低動態效果 */
+@media (prefers-reduced-motion: reduce){
+  .track-left .vstack,
+  .track-left .en-vert{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+
+
+
+/* ==========================================圖片 */
+/* 斜切照片區 */
+.diag-photo{
+  /* 🔥 調整這兩個就好 */
+  --h: clamp(260px, 55vw, 600px);  /* 照片整體高度（變大） */
+  --tilt: 8vw;                     /* 斜度（不要太大，才不會變細） */
+margin-top: 65px;   /* 👈 往下推 */
+  width: 100%;
+  height: var(--h);
+  overflow: hidden;
+  background: transparent;
+}
+
+.diag-photo__img{
+  width: 100%;
+  height: 100%;
+
+  background-image: url("../img/TSA00160i.jpg");
+  background-size: cover;
+  background-position: center;
+
+  /* 🔥 上下平行 + 用變數 */
+  clip-path: polygon(
+    0 var(--tilt),
+    100% 0,
+    100% calc(100% - var(--tilt)),
+    0 100%
+  );
+}
+
+/* ==========================================圖片 */
+
+
+
+/* ==========================================文字 */
+/* 文字大留白 section（像你圖那樣） */
+.oldstreet-text{
+  background: #f8f9fa; /* 依你的網站底色可微調 */
+  padding: clamp(56px, 10vw, 120px) 0;
+}
+
+.oldstreet-text__inner{
+  width: min(860px, calc(100% - 64px)); /* 內文寬度 + 手機留白 */
+  margin: 0 auto;
+}
+
+.oldstreet-text__inner p{
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 2.2;
+  letter-spacing: 0.04em;
+  color: #1f2937; /* 深灰黑 */
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+/* ==========================================文字 */
+
+
+
+}

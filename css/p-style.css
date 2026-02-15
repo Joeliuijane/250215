@@ -322,25 +322,20 @@ iframe{ max-width: 100%; }
   grid-area: stack;
   z-index: 10;
   /* 永遠正圓 */
-  --circle: clamp(420px, 130vw, 680px);
+  --circle: clamp(420px, 120vw, 680px);
   inline-size: var(--circle);
   block-size: var(--circle);
-
   border-radius: 50%;
   overflow: hidden;
   background: #000;
-
   display: grid;
   place-items: center;
   margin: 0 auto;
-
   /* ✅ 圓位置：往左 / 往上（用 px 最穩） */
-  --shift-x: clamp(-260px, -15.4vw, -12px); /* 往左 */
+  --shift-x: clamp(-260px, -10vw, -12px); /* 往左 */
   --shift-y: 30px;                        /* 往上（負值） */
-
   /* ✅ 一次把 X / Y 都用上 */
   transform: translate(var(--shift-x), var(--shift-y));
-
   clip-path: none !important;
   -webkit-clip-path: none !important;
 }
@@ -348,18 +343,15 @@ iframe{ max-width: 100%; }
 
 
 /* ✅ 讓影片真的「填滿」圓形：不要 static，不要 height:auto */
-.jr-hero-video .jr-yt-iframe{
+/* .jr-hero-video .jr-yt-iframe{
   width: 100% !important;
   height: 100% !important;
-
   border: 0;
   display: block;
-
-  /* 讓 YouTube iframe 以 cover 的方式裁切 */
-  transform: scale(1.35);    /* ✅ 關鍵：放大去 cover 圓形 */
+  transform: scale(1.35);    
   transform-origin: center;
   pointer-events: none;
-}
+} */
 
 /* 右下角文字：不用 absolute，用 grid 疊在同一層 */
 .jr-hero-video .jr-hero-caption{
@@ -415,11 +407,9 @@ iframe{ max-width: 100%; }
   position: absolute;
   top: 50%;
   left: 50%;
-
   /* 關鍵：正方形要 cover 16:9 → 寬要變成 177.78% */
   width: 177.78%;
   height: 100%;
-
   transform: translate(-50%, -50%);
   transform-origin: center center;
 
