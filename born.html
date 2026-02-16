@@ -29,45 +29,50 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/born.css" rel="stylesheet">
+        <link href="css/p-born.css" rel="stylesheet">
     </head>
 
     <body >
-        <!-- header Start -->
-        <section class="no-noise">
-            <div class="navbar navbar-expand-lg bg-dark navbar-dark ">
-                <div class="container-fluid">
-                    <a href="index.html" class="navbar-brand">
-                        <img src="img/logo2.png" alt="mango Logo"  height="70">
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+         <!-- header Start -->
+         <header class="m-header">
+            <div class="m-header__row">
+                <button class="m-hamburger" id="mHamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+                </button>
+            </div>
+            </header>
 
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav ml-auto">
-                            <a href="index.html" class="nav-item nav-link ">首頁</a>
-                            <a href="homepost.html" class="nav-item nav-link ">職人共耕者</a>
-                            <a href="spot.html" class="nav-item nav-link">芒果的故鄉</a>
-                            <a href="born.html" class="nav-item nav-link active">芒果的誕生</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">關於我們</a>
-                                <div class="dropdown-menu">
-                                    <a href="say.html" class="dropdown-item">我們想說的事</a>
-                                    <a href="team.html" class="dropdown-item">團隊介紹</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="m-menu" id="mMenu" aria-hidden="true">
+            
+
+            <div class="m-menu__inner">
+                <!-- <button class="m-close" id="mClose" aria-label="Close menu">✕</button> -->
+                <div class="m-menu__brand">
+                <div class="m-menu__title">夏日芒芒</div>
+                <div class="m-menu__sub">一對老夫妻，一座果園，寫給土地的情書</div>
+                </div>
+
+                <nav class="m-menu__nav">
+                <a href="index.html">首頁</a>
+                <a href="homepost.html">職人共耕者</a>
+                <a href="p-spot.html">芒果的故鄉</a>
+                <a href="born.html">芒果的誕生</a>
+                <a href="say.html">我們想說的事</a>
+                <a href="team.html">團隊介紹</a>
+                </nav>
+
+                <!-- <div class="m-menu__lang">JP / EN / KR / CH</div> -->
+
+                <div class="m-menu__social">
+                <a href="#">IG</a><a href="#">YT</a>
                 </div>
             </div>
-        </section>
+            </div>
         <!-- header End -->
-
     
 
         <!-- 你網頁其他內容 ... -->
-        <main class="page-stage">
+        <!-- <main class="page-stage">
             <div class="page-curve" aria-hidden="true">
                 <svg class="curve-svg" viewBox="0 0 1200 1000" preserveAspectRatio="none">
                 <path class="curve-path" d=""></path>
@@ -76,7 +81,6 @@
             <section class="workflow">
                 <div class="workflow-grid">
                     <article class="wf-card wf-mid wf-text">
-                    <!-- <p class="wf-kicker">DIRECTION</p> -->
                     <h2 class="wf-title">芒果的一生：花開</h2>
                     <p class="wf-desc">芒果通常在7-9月時採收，採完要馬上修剪，讓芒果樹能趕快長新枝。而一年大概可以長2~3次新梢，大約在10-12月的時候，枝條會慢慢成熟，然後靠冬天的低溫期，讓花芽分化，準備明年開花。
                        
@@ -88,14 +92,14 @@
                         <br><br><span class="wf-note-cold">花芽分化：</span>正常情況下，樹的芽會繼續長葉子，但如果在對的時機，像冬天氣溫變低，樹就會進入一個「決定」的過程，讓那些芽開始準備開花，這個過程就叫花芽分化。</p>
                     </article>
                     <div class="wf-spacer"></div>
-                    <!-- 左上卡 -->
+                   
                     <article class="wf-card wf-left">
                     <div class="wf-media js-stretch">
                         <img src="img/芒果 抽梢期i.png" alt="上方圖片">
                     </div>
                     </article>
 
-                    <!-- 右上文字 -->
+                    
                     <article class="wf-card wf-right wf-text">
                     <p class="wf-kicker">Shoot elongation stage</p>
                     <h2 class="wf-title">抽梢期</h2>
@@ -105,7 +109,7 @@
                                         屏東在6-7月開始抽梢，9-10月停梢，高雄以北則 7-8月抽
                                         梢，在10-11月停梢。</p>
                     </article>
-                    <!-- 左下文字 -->
+                   
                     <article class="wf-card wf-left wf-text">
                     <p class="wf-kicker">Quiescent stage</p>
                     <h2 class="wf-title">停梢期</h2>
@@ -114,22 +118,20 @@
                          <span class="wf-note">應注意：</span>病蟲害管理、控制水分。屏東地區9-10月停梢，高雄、臺南(含)以北則 10-11月停梢。</p>
                     </article>
 
-                    <!-- 右下卡 -->
+                   
                     <article class="wf-card wf-right">
                     <div class="wf-media js-stretch">
                         <img src="img/芒果 停梢期i.jpg" alt="下方圖片">
                     </div>
                     </article>
-                    <!-- ========== 第二組開始 ========== -->
-
-                    <!-- 5 左圖 -->
+                    
                     <article class="wf-card wf-left">
                     <div class="wf-media js-stretch">
                         <img src="img/芒果 開花期i.jpg" alt="">
                     </div>
                     </article>
 
-                    <!-- 6 右字 -->
+         
                     <article class="wf-card wf-right wf-text">
                     <p class="wf-kicker">Anthesis and Fruit Set Anthesis</p>
                     <h2 class="wf-title">花開著果期</h2>
@@ -140,7 +142,6 @@
                     </p>
                     </article>
 
-                    <!-- 7 左字 -->
                     <article class="wf-card wf-left wf-text">
                     <p class="wf-kicker">Fruit Development Stage</p>
                     <h2 class="wf-title">果實發育期</h2>
@@ -151,7 +152,7 @@
                     </p>
                     </article>
 
-                    <!-- 8 右圖 -->
+
                     <article class="wf-card wf-right">
                     <div class="wf-media js-stretch">
                         <img src="img/芒果 發育期i.png" alt="">
@@ -163,65 +164,142 @@
                     </div>
                     </article>
 
-                    <!-- 右上文字 -->
+  
                     <article class="wf-card wf-right wf-text">
                     <p class="wf-kicker">Harvest season</p>
                     <h2 class="wf-title">採收期</h2>
                     <p class="wf-desc"><br>土芒果6月前，愛文、玉文、金煌、夏雪、蜜雪等品種在5月至7月⋯⋯等等有些有做產期調節的品種，如農民黨1號、卓安南等俗稱四季芒果，有做產期調節的話甚至11月到隔年2月都可以採。</p>
-                    </article>
-                    
-
+                    </article> -->
 <!-- ========== 第二組結束 ========== -->
-
                 </div>
             </section>
-        <!-- 你網頁其他內容 ... -->
+<!-- ================================ -->
+<section class="m-hero">
+  <p class="m-hero__lead reveal">在陽光與風之間，芒果悄悄開始它的一生<br>
+從冬日的沉潛，到春日的花開<br>
+再到盛夏的金黃飽滿<br>
+一年四季的等待與成長<br>
+都化成那一口溫柔的甜</p>
 
-           <!-- Footer Start -->
-        <footer id="site-footer" class="footer-modern noise-bg footer--bleed">
-        <div class="footer-inner container">
-            <!-- 半透明玻璃板 -->
-            <div class="footer-panel">
-            <div class="footer-grid">
+  <div class="m-hero__mark">
+    
+    <span class="m-hero__jp reveal">抽梢期</span>
+    <span class="m-hero__en reveal">Jul–Aug</span>
+  </div>
+</section>
 
-                <!-- 左上：Logo（自動佔兩排） -->
-                <a class="footer-brand" href="/">
-                <img src="img/logo.PNG" alt="Brand" />
-                </a>
+<section class="m-block">
+  <figure class="m-block__media">
+    <img src="img/芒果 抽梢期i.png" alt="">
+  </figure>
 
-                <!-- 第一排四欄 -->
-                <section class="footer-col">
-                <h4>聯絡我們</h4>
-                <ul class="footer-list">
-                    <li><a href="#"></a></li>
-                    <li><a href="#">夏日芒芒-玉井</a></li>
-                    <li><a href="#"> 714台南市玉井區中正路360巷165之1號</a></li>
-                    <li><a href="#">TEL: 06 574 2828</a></li>
-                </ul>
-                </section>
+  <div class="m-block__text">
+    <h2>新梢的準備<br>為明年的果實打底</h2>
+    <p>
+      芒果果實採收後，芽體萌發新梢，而果樹的新稍是不能結果的， 會浪費很多營養。<br>
+       應注意：在採收後會盡速修剪，培育新梢，為下一批芒果做準備。 屏東在6-7月開始抽梢，9-10月停梢，高雄以北則 7-8月抽 梢，在10-11月停梢。
+    </p>
+  </div>
+<!-- ===================================== -->
 
-                <section class="footer-col">
-                <h4>田間最芒的狗</h4>
-                <ul class="footer-list">
-                    <li><a href="#"></a>靜宜大學</li>
-                    <li><a href="#">433台中市沙鹿區台灣大道七段200號</a></li>
-                    <li><a href="#">04 2632 8001</a></li>
-                </ul>
-                </section>
+   <p class="m-hero__lead reveal"><br><br><br><br></p>
+   <div class="m-hero__mark">
+    
+    <span class="m-hero__jp reveal">停梢期</span>
+    <span class="m-hero__en reveal">Oct–Nov</span>
+  </div>
+</section>
 
-                <section class="footer-col">
-                <h4>社群平台</h4>
-                <ul class="footer-list">
-                    <li><a href="#" class="icon-ig">instagram</a></li>
-                    <li><a href="#" class="icon-yt">youtube</a></li>
-                </ul>
-                </section>
+<section class="m-block">
+  <figure class="m-block__media">
+    <img src="img/芒果 停梢期i.jpg" alt="">
+  </figure>
 
-            </div>
-            </div>
-        </div>
-        </footer>
-        <!-- Footer End -->
+  <div class="m-block__text">
+    <h2>花芽的前夜<br>在沉穩中醞釀花期</h2>
+    停止抽新梢，枝梢會趨於成熟，枝梢表面上也會停止生長，芽體
+    內會在11-12月進入進入花芽分化的階段。<br>
+     應注意：病蟲害管理、控制水分。屏東地區9-10月停梢，高雄、臺南(含)以北則 10-11月停梢。
+    <p>
+
+    </p>
+  </div>
+
+ 
+<!-- ===================================== -->
+ <p class="m-hero__lead reveal"><br><br><br><br></p>
+   <div class="m-hero__mark">
+    
+    <span class="m-hero__jp reveal">花開著果期</span>
+    <span class="m-hero__en reveal">Feb–Mar</span>
+  </div>
+</section>
+
+<section class="m-block">
+  <figure class="m-block__media">
+    <img src="img/芒果 開花期i.jpg" alt="">
+  </figure>
+
+  <div class="m-block__text">
+    <h2>花意成形<br>春意化為果實</h2>
+    <p>
+      花開後，大概 45天左右就會完成授粉跟結果。屏東花期是
+        2月到隔年 2月，高雄、台南則是 2-3月。<br>
+        應注意：炭疽病、薊馬等病蟲害的防治，還會飼養授粉昆蟲來幫忙授粉。
+    </p>
+  </div>
+<!-- ===================================== -->
+ 
+ <p class="m-hero__lead reveal"><br><br><br><br></p>
+   <div class="m-hero__mark">
+    
+    <span class="m-hero__jp reveal">果實發育期</span>
+    <span class="m-hero__en reveal">Mar–May</span>
+  </div>
+</section>   
+
+<section class="m-block">
+  <figure class="m-block__media">
+    <img src="img/芒果 發育期i.png" alt="">
+  </figure>
+  <div class="m-block__text">
+    <h2>日光慢慢填滿<br>為豐收鋪陳</h2>
+    <p>
+        花謝後一個月，果實開始長大。
+                         <br>應注意：補水、施肥、疏果，才能養出大又漂亮的果實，接著會套袋保護。
+                        *疏果：一種果園管理措施。怕養分供不應求，會用人為方式去除一部分過多的花和幼
+                        果，以獲得優質果品和持續豐產。
+    </p>
+  </div>
+ 
+<!-- ===================================== -->
+ <p class="m-hero__lead reveal"><br><br><br><br></p>
+   <div class="m-hero__mark">
+    
+    <span class="m-hero__jp reveal">採收期</span>
+    <span class="m-hero__en reveal">May–Jul</span>
+  </div>
+</section>   
+
+<section class="m-block">
+  <figure class="m-block__media">
+    <img src="img/芒果 採收期i.png" alt="">
+  </figure>
+
+  <div class="m-block__text">
+    <h2>盛夏的金黃時刻<br>果熟之時</h2>
+    <p>
+      土芒果6月前，愛文、玉文、金煌、夏雪、蜜雪等品種在5月至7月⋯⋯等等有些有做產期調節的品種，
+      如農民黨1號、卓安南等俗稱四季芒果，有做產期調節的話甚至11月到隔年2月都可以採。
+    </p>
+  </div>
+<!-- ===================================== -->
+
+
+</section>
+
+
+ 
         </main> 
         
         <!-- Back to top button -->

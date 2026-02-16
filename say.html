@@ -29,7 +29,7 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="css/say.css" rel="stylesheet">
+        <link href="css/p-say.css" rel="stylesheet">
     </head>
 
 
@@ -37,43 +37,52 @@
 
         <body class="noise-bg">
         <!-- header Start -->
-        <section class="no-noise">
-            <div class="navbar navbar-expand-lg bg-dark navbar-dark ">
-                <div class="container-fluid">
-                    <a href="index.html" class="navbar-brand">
-                        <img src="img/logo2.png" alt="mango Logo"  height="70">
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+         <header class="m-header">
+            <div class="m-header__row">
+                <button class="m-hamburger" id="mHamburger" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+                </button>
+            </div>
+            </header>
 
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav ml-auto">
-                            <a href="index.html" class="nav-item nav-link ">首頁</a>
-                            <a href="homepost.html" class="nav-item nav-link ">職人共耕者</a>
-                            <a href="spot.html" class="nav-item nav-link">芒果的故鄉</a>
-                            <a href="born.html" class="nav-item nav-link">芒果的誕生</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">關於我們</a>
-                                <div class="dropdown-menu">
-                                    <a href="say.html" class="dropdown-item">我們想說的事</a>
-                                    <a href="team.html" class="dropdown-item">團隊介紹</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="m-menu" id="mMenu" aria-hidden="true">
+            
+
+            <div class="m-menu__inner">
+                <!-- <button class="m-close" id="mClose" aria-label="Close menu">✕</button> -->
+                <div class="m-menu__brand">
+                <div class="m-menu__title">夏日芒芒</div>
+                <div class="m-menu__sub">一對老夫妻，一座果園，寫給土地的情書</div>
+                </div>
+
+                <nav class="m-menu__nav">
+                <a href="index.html">首頁</a>
+                <a href="homepost.html">職人共耕者</a>
+                <a href="p-spot.html">芒果的故鄉</a>
+                <a href="born.html">芒果的誕生</a>
+                <a href="say.html">我們想說的事</a>
+                <a href="team.html">團隊介紹</a>
+                </nav>
+
+                <!-- <div class="m-menu__lang">JP / EN / KR / CH</div> -->
+
+                <div class="m-menu__social">
+                <a href="#">IG</a><a href="#">YT</a>
                 </div>
             </div>
-        </section>
+            </div>
         <!-- header End -->
 
         <!-- ======================= -->
         <!-- ======================= -->
         <!-- 區塊一：圖文不同步滑動 + 三段文字 -->
-        <!-- ======================= -->
+
+
+        
+        <!-- ============================================================== -->
         <section id="block1" class="say-section block1">
         <div class="b1-container">
-            <!-- 左側：照片群（做垂直位移） -->
+
             <div class="b1-images">
             <div class="b1-img b1-img-1">
                 <img src="img/DSCF0117.JPG" alt="">
@@ -87,10 +96,14 @@
             <div class="b1-img b1-img-4">
                 <img src="img/DSCF8384.JPG" alt="">
             </div>
+            
             </div>
 
+         <!-- ============================================================== -->           
             <!-- 右側：三階段文字 -->
             <div class="b1-text">
+                
+  <h2 class="b1-title reveal">一段不急著成熟的日子</h2>
             <p class="b1-line b1-line-1">
                 玉井的果園，隨著陽光慢慢運作。
             </p>
@@ -152,7 +165,7 @@
         <!-- ======================= -->
         <!-- 區塊二：照片不同步閃爍 + 橫向位移 -->
         <!-- ======================= -->
-        <section id="block2" class="say-section block2">
+        <!-- <section id="block2" class="say-section block2">
         <div class="b2-viewport">
             <div class="b2-track">
             <img src="img/DSCF8379.JPG"  class="b2-photo" alt="">
@@ -163,7 +176,7 @@
             <img src="img/YEH_8396.JPG"  class="b2-photo" alt="">
             </div>
         </div>
-        </section>
+        </section> -->
 
 
 
@@ -172,51 +185,7 @@
 
 
 
-       <!-- Footer Start -->
-        <footer id="site-footer" class="footer-modern noise-bg footer--bleed">
-        <div class="footer-inner container">
-            <!-- 半透明玻璃板 -->
-            <div class="footer-panel">
-            <div class="footer-grid">
 
-                <!-- 左上：Logo（自動佔兩排） -->
-                <a class="footer-brand" href="/">
-                <img src="img/logo.PNG" alt="Brand" />
-                </a>
-
-                <!-- 第一排四欄 -->
-                <section class="footer-col">
-                <h4>聯絡我們</h4>
-                <ul class="footer-list">
-                    <li><a href="#"></a></li>
-                    <li><a href="#">夏日芒芒-玉井</a></li>
-                    <li><a href="#"> 714台南市玉井區中正路360巷165之1號</a></li>
-                    <li><a href="#">TEL: 06 574 2828</a></li>
-                </ul>
-                </section>
-
-                <section class="footer-col">
-                <h4>田間最芒的狗</h4>
-                <ul class="footer-list">
-                    <li><a href="#"></a>靜宜大學</li>
-                    <li><a href="#">433台中市沙鹿區台灣大道七段200號</a></li>
-                    <li><a href="#">04 2632 8001</a></li>
-                </ul>
-                </section>
-
-                <section class="footer-col">
-                <h4>社群平台</h4>
-                <ul class="footer-list">
-                    <li><a href="#" class="icon-ig">instagram</a></li>
-                    <li><a href="#" class="icon-yt">youtube</a></li>
-                </ul>
-                </section>
-
-            </div>
-            </div>
-        </div>
-        </footer>
-        <!-- Footer End -->
 
 
 

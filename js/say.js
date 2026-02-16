@@ -25,7 +25,7 @@
   imgGroup.style.setProperty('--b1-img-y', imgOffset + 'px');
 
   // 加上「輪轉」效果：progress 0~1 對應大約 -6° ~ +6°
-  const rot = (progress - 0.5) * 12; // 12 可調，越大轉越多
+  const rot = (progress - 0.5) * 20; // 12 可調，越大轉越多
   block1.style.setProperty('--b1-rot', rot.toFixed(2));
 
 
@@ -33,11 +33,11 @@
     const n = lines.length;
 
     // 可調：每句淡入的寬度（越大越慢越有感）
-    const revealWindow = 0.005; // 0.08 ~ 0.16 都很常用
+    const revealWindow = 0.0001; // 0.08 ~ 0.16 都很常用
 
     lines.forEach((line, index) => {
       // ✅ 把 0~1 平均切成 n 份，每句都有自己的起點
-      const spread = 0.80;                 // 只用 80% 的 progress 完成全部句子
+      const spread = 0.55;                 // 只用 80% 的 progress 完成全部句子
 const baseStart = (index / n) * spread;
 
 
@@ -453,3 +453,34 @@ $(document).ready(function () {
     if (!img.complete) img.addEventListener("load", buildPath, { once: true });
   });
 })();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('mHamburger');
+  const menu = document.getElementById('mMenu');
+  if (!btn || !menu) return;
+
+  const isOpen = () => menu.classList.contains('is-open');
+
+  const openMenu = () => {
+    menu.classList.add('is-open');
+    document.body.classList.add('menu-open');
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+  };
+
+  const closeMenu = () => {
+    menu.classList.remove('is-open');
+    document.body.classList.remove('menu-open');
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+  };
+
+  btn.addEventListener('click', () => {
+    isOpen() ? closeMenu() : openMenu();
+  });
+
+  // 點背景關閉（點到面板不關）
+  menu.addEventListener('click', (e) => {
+    if (e.target === menu) closeMenu();
+  });
+});
