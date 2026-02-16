@@ -1,5 +1,5 @@
 
-@import url("./say.css");
+@import url("./team.css");
 @media (max-width: 991.98px){
 iframe{ max-width: 100%; }
 
@@ -139,48 +139,86 @@ iframe{ max-width: 100%; }
   }
   body.menu-open{ overflow: hidden; }
 
-  /* 1) 讓整段不要垂直置中（這會造成上面超大留白、節奏怪） */
-  .block1{
-    align-items: flex-start;     /* 原本 center */
-  }
-
-  /* 2) 只在手機增加「故事卷軸長度」：讓文字有足夠滾動篇幅才會出完 */
-  @media (max-width: 768px){
-    .block1{
-      min-height: 260vh;         /* ✅ 原本 200vh，改大一點讓文字先完整出現 */
-      padding: 96px 0 96px;      /* 上下留白可微調 */
-    }
-
-    /* 3) 讓文字區先佔一段高度（圖片不要太早進畫面） */
-    .b1-text{
-      padding-bottom: 36px;
-    }
-
-    /* 4) 圖片群晚一點出現 + 比例稍微扁一點，整體更順 */
-    .b1-images{
-      margin-top: 24px;
-      gap: 18px;
-    }
-    .b1-img{
-      padding-top: 62%;          /* 原本 70%，變扁一點就不會太快佔滿畫面 */
-      border-radius: 18px;
-    }
-  }
-  .b1-title{
-  font-size: 6.5vw;
-  letter-spacing: .2em;
-  text-align: center;
-  margin-bottom: 48px;
-  color:rgba(0,0,0,.8);
+  /* =========================
+   Workflow 手機版：照片 + 文字全部置中（不用絕對定位）
+   貼在 p-team.css 的 @media (max-width: 991.98px) 裡，且盡量放最後
+   ========================= */
+.workflow .workflow-grid{
+  grid-template-columns: 1fr;     /* 單欄 */
+  justify-items: center;          /* 每個卡片水平置中 */
+  row-gap: 42px;                  /* 你要更鬆就加大 */
 }
 
-.b1-title::after{
-  content: "";
-  display: block;
-  width: 60vw;
-  height: 1px;
-  background: rgba(0,0,0,.1);
-  margin: 16px auto 0;
+.workflow .wf-left,
+.workflow .wf-right{
+  grid-column: 1;
+  margin-left: 0 !important;      /* 取消原本右欄往左拉 */
 }
+
+/* 卡片本體置中 */
+.workflow .wf-card{
+  justify-self: center;
+  width: 100%;
+}
+
+/* 取消所有「手動位移」(桌機用的 translate / margin-left) */
+.workflow .wf-card,
+.workflow .wf-media{
+  transform: none !important;
+  margin-left: 0 !important;
+}
+
+/* 大圖各種 wf-large* 的偏移全部歸零 */
+.workflow [class^="wf-large"] .wf-media,
+.workflow [class*=" wf-large"] .wf-media{
+  width: min(520px, 92vw) !important; /* 手機讓它乖乖縮進來 */
+  max-width: 92vw !important;
+  margin: 0 auto !important;
+  transform: none !important;
+}
+
+/* 文字區也歸零 + 置中 */
+.workflow .wf-text{
+  width: min(520px, 92vw);
+  margin: 0 auto;
+  text-align: center;              /* 你要保留左對齊就改 left */
+}
+
+/* 你那幾段文字原本有 translate，把它們都取消 */
+.workflow .wf-text--1,
+.workflow .wf-text--2,
+.workflow .wf-text--3,
+.workflow .wf-text--4,
+.workflow .wf-text--5,
+.workflow .wf-text--6,
+.workflow .wf-text--7{
+  transform: none !important;
+  max-width: none !important;
+
+
+  /* ========== Workflow 手機版：強制文字/卡片完全置中（解決有的左、有的右） ========== */
+  .workflow .workflow-grid{
+    padding-inline: 16px;          /* 給一點左右內距，避免貼邊或被裁 */
+  }
+
+  /* 文字卡片：盒子置中 */
+  .workflow .workflow-grid .wf-card.wf-text{
+    justify-self: center !important;
+    width: min(520px, 92vw) !important;
+    margin-inline: auto !important;
+  }
+
+  /* ✅ 如果你希望「文字內容也置中」就用這段（最強制） */
+  .workflow .workflow-grid .wf-card.wf-text,
+  .workflow .workflow-grid .wf-card.wf-text *{
+    text-align: center !important;
+  }
+
+  /* ✅ 強制取消桌機用的位移（team.css 裡有很多 selector + !important） */
+  .workflow .workflow-grid .wf-card,
+  .workflow .workflow-grid .wf-card *{
+    transform: none !important;
+  }
+
 
 }
