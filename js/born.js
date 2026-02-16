@@ -417,3 +417,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   els.forEach(el => io.observe(el));
 })();
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-in");
+    }
+  });
+}, {
+  threshold: 0.15,     // 🔥 不要太小
+  rootMargin: "0px 0px -10% 0px"
+});
+// iOS fallback
+if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+  document.querySelectorAll('.reveal').forEach(el=>{
+    el.classList.add('is-in');
+  });
+}
+
