@@ -128,20 +128,20 @@
   });
 
   // 觸控備援
-  let startY = null;
-  wrapper.addEventListener('touchstart', (e)=>{
-    startY = e.touches[0].clientY;
-  }, {passive:true});
+  // let startY = null;
+  // wrapper.addEventListener('touchstart', (e)=>{
+  //   startY = e.touches[0].clientY;
+  // }, {passive:true});
 
-  wrapper.addEventListener('touchend', (e)=>{
-    if(startY == null) return;
-    const dy = e.changedTouches[0].clientY - startY;
-    if(Math.abs(dy) > 30){
-      if(dy < 0) go(i + 1);
-      else       go(i - 1);
-    }
-    startY = null;
-  }, {passive:true});
+  // wrapper.addEventListener('touchend', (e)=>{
+  //   if(startY == null) return;
+  //   const dy = e.changedTouches[0].clientY - startY;
+  //   if(Math.abs(dy) > 30){
+  //     if(dy < 0) go(i + 1);
+  //     else       go(i - 1);
+  //   }
+  //   startY = null;
+  // }, {passive:true});
 })();
 
 
